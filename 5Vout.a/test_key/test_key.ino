@@ -1,37 +1,43 @@
 #include <Keyboard.h>
 
-int inPin[6] = {2, 3, 4, 5, 6, 7};
-int readValues[6] = {0};
-char buf[12]; // "-2147483648\0"
+int PIN_UP = 3;
+int PIN_DOWN = 5;
+int PIN_LEFT = 2;
+int PIN_RIGHT = 4;
+int PIN_A = 6;
+int PIN_B = 7;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  for (int i = 0; i < sizeof(inPin)/sizeof(int); ++i) {
-    pinMode(i, INPUT_PULLUP);
-  }
+  pinMode(PIN_UP, INPUT_PULLUP);
+  pinMode(PIN_DOWN, INPUT_PULLUP);
+  pinMode(PIN_LEFT, INPUT_PULLUP);
+  pinMode(PIN_RIGHT, INPUT_PULLUP);
+  pinMode(PIN_A, INPUT_PULLUP);
+  pinMode(PIN_B, INPUT_PULLUP);
   Keyboard.begin();
 }
 
 void loop() {
-  int buttonValue1 = digitalRead(4);
-  int buttonValue2 = digitalRead(3);
-  int buttonValue3 = digitalRead(2);
-  int buttonValue4 = digitalRead(5);
-  int buttonValue5 = digitalRead(6);
-  int buttonValue6 = digitalRead(7);
+  int upVal = digitalRead(PIN_UP);
+  int downVal = digitalRead(PIN_DOWN);
+  int leftVal = digitalRead(PIN_LEFT);
+  int rightVal = digitalRead(PIN_RIGHT);
+  int aVal = digitalRead(PIN_A);
+  int bVal = digitalRead(PIN_B);
+delay(50);
+  if(upVal == LOW){Keyboard.press('w');}
+  else{Keyboard.release('w');}
+  if(downVal == LOW){Keyboard.press('s');}
+  else{Keyboard.release('s');}
+  if(leftVal == LOW){Keyboard.press('a');}
+  else{Keyboard.release('a');}
+  if(rightVal == LOW){Keyboard.press('d');}
+  else{Keyboard.release('d');}
+  if(aVal == LOW){Keyboard.press(32);}
+  else{Keyboard.release(32);}
+  if(bVal == LOW){Keyboard.press(KEY_LEFT_CTRL);}
+  else{Keyboard.release(KEY_LEFT_CTRL);} 
 
-  if(buttonValue1 == LOW){Keyboard.press('A');}
-  else{Keyboard.release('A');}
-  if(buttonValue2 == LOW){Keyboard.press('B');}
-  else{Keyboard.release('B');}
-  if(buttonValue3 == LOW){Keyboard.press('C');}
-  else{Keyboard.release('C');}
-  if(buttonValue4 == LOW){Keyboard.press('D');}
-  else{Keyboard.release('D');}
-  if(buttonValue5 == LOW){Keyboard.press('E');}
-  else{Keyboard.release('E');}
-  if(buttonValue6 == LOW){Keyboard.press('F');}
-  else{Keyboard.release('F');} 
-    
 }
