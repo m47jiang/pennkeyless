@@ -2,8 +2,8 @@
 
 int PIN_UP = 3;
 int PIN_DOWN = 5;
-int PIN_LEFT = 2;
-int PIN_RIGHT = 4;
+int PIN_LEFT = 4;
+int PIN_RIGHT = 2;
 int PIN_A = 6;
 int PIN_B = 7;
 
